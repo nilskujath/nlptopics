@@ -45,7 +45,7 @@ Nils Kujath
 ## Linear Algebra Basics (cont'd)
 
 * Let $\mathbf{v} = (1,2,3)$ and $\mathbf{A} = \begin{bmatrix}1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix}$.
-* We can use Python’s `numpy` package to represent tensors using the `ndarray` class, which provides a general-purpose implementation of *n*-dimensional arrays (note that Python indexes from $0$):
+* We can use Python’s NumPy package to represent tensors using the `ndarray` class, which provides a general-purpose implementation of *n*-dimensional arrays (note that Python indexes from $0$):
 ```python
 import numpy as np
 
@@ -71,10 +71,68 @@ v[0]: 1   A[1]: [4 5 6]   A[1,2]: 6
 	  e.g.: $(1,2,3) + (2,3,4) = (3,5,7)$;
 	* Similarly, their **difference** is defined componentwise: $\mathbf{u} - \mathbf{v} = (u_1 - v_1, \ldots, u_n - v_n) \in \mathbb{R}^n$,
 	  e.g.: $(1,2,3) - (4,5,6) = (-3,-3,-3)$.
+```python
+import numpy as np
+
+u = np.array([1,2,3])
+v = np.array([4,5,6])
+
+add = u + v
+sub = u - v
+
+print(f"u + v = {add}\nu - v = {sub}")
+```
+
+```
+u + v = [5 7 9]
+u - v = [-3 -3 -3]
+```
+
+---
+## Linear Algebra Basics (cont'd)
+
 * Let $n \in \mathbb{N}$ and $k \in \mathbb{R}$. Let $\mathbf{u} = (u_1, \ldots, u_n)$. $\mathbf{u}$ can be multiplied with a scalar $k$:
 	* The **scalar multiplication** of $\mathbf{u}$ with $k$ is defined componentwise: $k \mathbf{u} = (k u_1, \ldots, k u_n) \in \mathbb{R}^n$,
 	  e.g.: $2 \cdot (1,2,3) = (2,4,6)$.
+
+```python
+import numpy as np
+
+k = 2
+u = np.array([1,2,3])
+
+mult = k * u
+
+print(f"ku = {mult}")
+```
+
+```
+ku = [2 4 6]
+```
+
+* NumPy uses **broadcasting** to extend operands of different shapes so that elementwise operations can be performed without explicit looping. In the case of scalar multiplication, the scalar is implicitly promoted to the shape of the vector, and each component is multiplied accordingly, making the operation fast.
+
+---
+## Linear Algebra Basics (cont'd)
+
 * Let $n \in \mathbb{N}$ and $a \in \mathbb{R}$. Let $\mathbf{u} = (u_1, \ldots, u_n)$ and $\mathbf{v} = (v_1, \ldots, v_n)$ be two vectors in $\mathbb{R}^n$:
 	* The two vectors $\mathbf{u}$ and $\mathbf{v}$ are said to be **colinear** iff $\exists a \in \mathbb{R}$ if there exists a scalar $a \neq 0$ such that we can multiply $\mathbf{v}$ with $a$ and get $\mathbf{u}$ (i.e., $\mathbf{u} = a\mathbf{v}$),
 	  e.g.: $(1,2,3) = 0.5 \cdot (2,4,6)$
 	* If $a > 0$, both vectors point in the same direction; If $a < 0$, both vectors point in opposite directions.
+
+```python
+import numpy as np
+
+def check_colinear(u: np.ndarray, v: np.ndarray) -> float | None:
+    try:
+        a = u[0] / v[0]
+        return a if np.allclose(u, a * v) else None
+    except:
+        return None
+
+print(check_colinear(np.array([1, 2, 3]), np.array([2, 4, 6])))
+```
+
+```
+0.5
+```
