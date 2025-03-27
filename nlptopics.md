@@ -136,3 +136,23 @@ print(check_colinear(np.array([1, 2, 3]), np.array([2, 4, 6])))
 ```
 0.5
 ```
+
+---
+## Linear Algebra Basics (cont'd)
+
+* Let $d \in \mathbb{N}$. Let $\mathbf{u} = (u_1, \ldots, u_d)$ and $\mathbf{v} = (v_1, \ldots, v_d)$. The **dot product** between $\mathbf{u}$ and $\mathbf{v}$ (denoted as $\mathbf{u} \cdot \mathbf{v}$) is defined as $\sum_{i=1}^{d}u_iv_i$,
+  e.g.: $(1,2,3) \cdot (4,5,6) = 1 \cdot 4 + 2 \cdot 5 + 3 \cdot 6 = 4 + 10 + 18 = 32$
+```python
+import numpy as np
+
+u = np.array([1,2,3])
+v = np.array([4,5,6])
+
+dotp = np.dot(u, v)
+
+print(f"Dot product of u and v: {dotp}")
+```
+
+```
+Dot product of u and v: 32
+```
