@@ -1,6 +1,8 @@
 ---
 marp: true
 theme: default
+# paginate: true
+# header: Nils Kujath. 2025. *Topics in Natural Language Processing*.
 style: |-
   :root {
     font-size: 24px;
@@ -8,6 +10,7 @@ style: |-
   code, pre {
     color: black !important;
   }
+  h1 {color: black;}
   h2 {
     position: absolute;
     top: 60px;
@@ -33,6 +36,12 @@ style: |-
 # Topics in Natural Language Processing
 
 Nils Kujath
+
+v0.1.4
+
+---
+**Part 1**
+# Linear Algebra Basics
 
 ---
 ## Linear Algebra Basics – Vector, Matrix, Tensor
@@ -192,3 +201,9 @@ print(f"Normalized vector u: {normalized}")
 ```
 Normalized vector u: [0.6 0.8]
 ```
+
+---
+
+**Part 2**
+
+# Graph Algorithms
